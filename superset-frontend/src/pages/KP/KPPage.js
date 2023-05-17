@@ -90,7 +90,7 @@ export default function DataPage() {
 
   const fetchData = async () => {
     await axios
-      .get('http://localhost:8000/api/mucangchai/')
+      .get('http://localhost:8000/api/khaupha/')
       .then((res) => {
         setData(res.data);
       })
@@ -101,7 +101,7 @@ export default function DataPage() {
   const deleteData = async (id) => {
     // console.log(id);
     await axios
-      .delete(`http://localhost:8000/api/mucangchai/${id}`)
+      .delete(`http://localhost:8000/api/khaupha/${id}`)
       .then((res) => {
         console.log(res.data);
         fetchData()
@@ -177,13 +177,13 @@ export default function DataPage() {
   return (
     <>
       <Helmet>
-        <title> Mù Cang Chải </title>
+        <title> Khau Phạ </title>
       </Helmet>
 
       <Container>
         <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5}>
           <Typography variant="h4" gutterBottom>
-            Thông tin lượng mưa trạm Mù Cang Chải
+            Thông tin lượng mưa trạm Khau Phạ
           </Typography>
           <Link style={{ textDecoration: 'none' }} to={`add`}>
             <Button variant="contained" startIcon={<Iconify icon="eva:plus-fill" />}>

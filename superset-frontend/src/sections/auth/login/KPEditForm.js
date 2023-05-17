@@ -16,7 +16,7 @@ export default function EditForm() {
   const [source, setSource] = useState('');
 
   const fetchDataById = async () => {
-    axios.get(`http://localhost:8000/api/mucangchai/${id}`)
+    axios.get(`http://localhost:8000/api/khaupha/${id}`)
       .then((res) => {
         setStationId(res.data.stationId);
         setTime(res.data.time);
@@ -34,12 +34,12 @@ export default function EditForm() {
     formData.append("amount", amount);
     formData.append("source", source);
     await axios
-      .post(`http://localhost:8000/api/mucangchai/${id}`, formData)
+      .post(`http://localhost:8000/api/khaupha/${id}`, formData)
       .then((res) => console.log(res.data))
       .catch((error) => {
         console.log(error);
       });
-    navigate('/dashboard/mcc', { replace: true });
+    navigate('/dashboard/kp', { replace: true });
   };
 
   // Reload data
