@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\MapController;
 use App\Http\Controllers\MuCangChaiController;
 use App\Http\Controllers\KhauPhaController;
 use App\Http\Controllers\CheTaoController;
@@ -20,6 +21,10 @@ use App\Http\Controllers\CheTaoController;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+// Map
+
+Route::get('/map', [MapController::class, 'index']);
 
 // MuCangChai
 
