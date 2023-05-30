@@ -6,6 +6,8 @@ import axios from 'axios';
 // @mui
 import {
   Card,
+  CardHeader,
+  Box,
   Table,
   Stack,
   Paper,
@@ -21,6 +23,7 @@ import {
   IconButton,
   TableContainer,
   TablePagination,
+  Grid,
 } from '@mui/material';
 // components
 import Iconify from '../../components/iconify';
@@ -179,7 +182,39 @@ export default function DataPage() {
       <Helmet>
         <title> Mù Cang Chải </title>
       </Helmet>
+      <Grid container spacing={3} sx={{ mb: 5 }}>
+      <Grid item xs={12} md={6} lg={8}>
+            <Card>
+              <CardHeader title="trạm Mù Cang Chải" />
 
+              <Box sx={{ p: 3, pb: 1 }} dir="ltr">
+                <iframe
+                  title="trạm Mù Cang Chải"
+                  width="600"
+                  height="400"
+                  seamless
+                  src="http://localhost:8088/superset/explore/p/ownB4nVPqKQ/?standalone=1&height=400"
+                />
+              </Box>
+            </Card>
+          </Grid>
+
+          <Grid item xs={12} md={6} lg={4}>
+            <Card>
+              <CardHeader title="trạm Mù Cang Chải" />
+
+              <Box sx={{ p: 3, pb: 1 }} dir="ltr">
+                <iframe
+                  title="trạm Mù Cang Chải"
+                  width="280"
+                  height="400"
+                  seamless
+                  src="http://localhost:8088/superset/explore/p/v3MZlKxBemo/?standalone=1&height=400"
+                />
+              </Box>
+            </Card>
+          </Grid>
+      </Grid>
       <Container>
         <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5}>
           <Typography variant="h4" gutterBottom>

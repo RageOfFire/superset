@@ -6,7 +6,7 @@ import icon from 'leaflet/dist/images/marker-icon.png';
 import iconShadow from 'leaflet/dist/images/marker-shadow.png';
 import { Helmet } from 'react-helmet-async';
 // @mui
-import { Grid, Container, Typography, Card, CardHeader, Box } from '@mui/material';
+import { Grid, Container, Card, Box } from '@mui/material';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 
 // ----------------------------------------------------------------------
@@ -44,9 +44,9 @@ export default function DashboardAppPage() {
         <title> Superset map </title>
       </Helmet>
       <Container maxWidth="xl">
-        <Typography variant="h4" sx={{ mb: 5 }}>
+        {/* <Typography variant="h4" sx={{ mb: 5 }}>
           Chào mừng quay trở lại
-        </Typography>
+        </Typography> */}
 
         <Grid container spacing={3} sx={{ mb: 5 }}>
           <Grid item xs={12} md={12} lg={12}>
@@ -66,101 +66,6 @@ export default function DashboardAppPage() {
                     </Marker>
                   ))}
                 </MapContainer>
-              </Box>
-            </Card>
-          </Grid>
-        </Grid>
-        <Grid container spacing={3}>
-          <Grid item xs={12} md={6} lg={8}>
-            <Card>
-              <CardHeader title="trạm Mù Cang Chải" />
-
-              <Box sx={{ p: 3, pb: 1 }} dir="ltr">
-                <iframe
-                  title="trạm Mù Cang Chải"
-                  width="600"
-                  height="400"
-                  seamless
-                  src="http://localhost:8088/superset/explore/p/ownB4nVPqKQ/?standalone=1&height=400"
-                />
-              </Box>
-            </Card>
-          </Grid>
-
-          <Grid item xs={12} md={6} lg={4}>
-            <Card>
-              <CardHeader title="trạm Mù Cang Chải" />
-
-              <Box sx={{ p: 3, pb: 1 }} dir="ltr">
-                <iframe
-                  title="trạm Mù Cang Chải"
-                  width="280"
-                  height="400"
-                  seamless
-                  src="http://localhost:8088/superset/explore/p/v3MZlKxBemo/?standalone=1&height=400"
-                />
-              </Box>
-            </Card>
-          </Grid>
-          <Grid item xs={12} md={6} lg={8}>
-            <Card>
-              <CardHeader title="trạm Khau Phạ" />
-
-              <Box sx={{ p: 3, pb: 1 }} dir="ltr">
-                <iframe
-                  title="trạm Khau Phạ"
-                  width="600"
-                  height="400"
-                  seamless
-                  src="http://localhost:8088/superset/explore/p/zbmPOLMpxq8/?standalone=1&height=400"
-                />
-              </Box>
-            </Card>
-          </Grid>
-
-          <Grid item xs={12} md={6} lg={4}>
-            <Card>
-              <CardHeader title="trạm Khau phạ" />
-
-              <Box sx={{ p: 3, pb: 1 }} dir="ltr">
-                <iframe
-                  title="trạm Khau Phạ"
-                  width="280"
-                  height="400"
-                  seamless
-                  src="http://localhost:8088/superset/explore/p/03dP0KLZqnA/?standalone=1&height=400"
-                />
-              </Box>
-            </Card>
-          </Grid>
-          <Grid item xs={12} md={6} lg={8}>
-            <Card>
-              <CardHeader title="trạm Chế Tạo" />
-
-              <Box sx={{ p: 3, pb: 1 }} dir="ltr">
-                <iframe
-                  title="trạm Chế tạo"
-                  width="600"
-                  height="400"
-                  seamless
-                  src="http://localhost:8088/superset/explore/p/MkOZ9lLBwoV/?standalone=1&height=400"
-                />
-              </Box>
-            </Card>
-          </Grid>
-
-          <Grid item xs={12} md={6} lg={4}>
-            <Card>
-              <CardHeader title="trạm Chế Tạo" />
-
-              <Box sx={{ p: 3, pb: 1 }} dir="ltr">
-                <iframe
-                  title="trạm Chế tạo"
-                  width="280"
-                  height="400"
-                  seamless
-                  src="http://localhost:8088/superset/explore/p/0Njpb7ABdez/?standalone=1&height=400"
-                />
               </Box>
             </Card>
           </Grid>

@@ -1,11 +1,25 @@
 import { useNavigate, useParams } from 'react-router-dom';
 // @mui
-import { Stack, TextField } from '@mui/material';
+import { Stack, TextField, MenuItem } from '@mui/material';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { LoadingButton } from '@mui/lab';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
 // ----------------------------------------------------------------------
+
+const sources = [
+  {
+    value: 'api',
+    label: 'api',
+  },
+  {
+    value: 'import',
+    label: 'import',
+  }
+];
 
 export default function EditForm() {
   const { id } = useParams();
@@ -50,10 +64,24 @@ export default function EditForm() {
   return (
     <>
       <Stack spacing={3} sx={{ my: 2 }}>
-        <TextField name="stationId" label="Mã trạm" onChange={(e) => setStationId(e.target.value)} value={stationId} />
-        <TextField name="time" label="Thời gian" onChange={(e) => setTime(e.target.value)} value={time} />
-        <TextField name="amount" label="Số lượng" onChange={(e) => setAmount(e.target.value)} value={amount} />
-        <TextField name="source" label="Nguồn" onChange={(e) => setSource(e.target.value)} value={source} />
+      <TextField type="number" name="stationId" label="Mã trạm" onChange={(e) => setStationId(e.target.value)} value={stationId} />
+      <LocalizationProvider dateAdapter={AdapterDayjs}>
+        <DatePicker onChange={(e) => setTime(e.target.value)} value={time} />
+      </LocalizationProvider>
+      <TextField type="number" name="amount" label="Số lượng" onChange={(e) => setAmount(e.target.value)} value={amount} />
+      <TextField
+        select
+        label="Chọn"
+        defaultValue="import"
+        onChange={(e) => setSource(e.target.value)}
+        value={source}
+      >
+        {sources.map((option) => (
+          <MenuItem key={option.value} value={option.value}>
+            {option.label}
+          </MenuItem>
+        ))}
+      </TextField>
       </Stack>
 
       <LoadingButton fullWidth size="large" type="submit" variant="contained" onClick={editItem}>

@@ -6,6 +6,9 @@ import axios from 'axios';
 // @mui
 import {
   Card,
+  CardHeader,
+  Grid,
+  Box,
   Table,
   Stack,
   Paper,
@@ -179,6 +182,40 @@ export default function DataPage() {
       <Helmet>
         <title> Chế tạo </title>
       </Helmet>
+
+      <Grid container spacing={3} sx={{ mb: 5 }}>
+          <Grid item xs={12} md={6} lg={8}>
+            <Card>
+              <CardHeader title="trạm Chế Tạo" />
+
+              <Box sx={{ p: 3, pb: 1 }} dir="ltr">
+                <iframe
+                  title="trạm Chế tạo"
+                  width="600"
+                  height="400"
+                  seamless
+                  src="http://localhost:8088/superset/explore/p/MkOZ9lLBwoV/?standalone=1&height=400"
+                />
+              </Box>
+            </Card>
+          </Grid>
+
+          <Grid item xs={12} md={6} lg={4}>
+            <Card>
+              <CardHeader title="trạm Chế Tạo" />
+
+              <Box sx={{ p: 3, pb: 1 }} dir="ltr">
+                <iframe
+                  title="trạm Chế tạo"
+                  width="280"
+                  height="400"
+                  seamless
+                  src="http://localhost:8088/superset/explore/p/0Njpb7ABdez/?standalone=1&height=400"
+                />
+              </Box>
+            </Card>
+          </Grid>
+        </Grid>
 
       <Container>
         <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5}>
