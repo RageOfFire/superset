@@ -24,7 +24,11 @@ import {
   TableContainer,
   TablePagination,
   Grid,
+  Accordion,
+  AccordionSummary,
+  AccordionDetails
 } from '@mui/material';
+import { ExpandCircleDown } from '@mui/icons-material';
 // components
 import Iconify from '../../components/iconify';
 import Scrollbar from '../../components/scrollbar';
@@ -107,7 +111,7 @@ export default function DataPage() {
       .delete(`http://localhost:8000/api/mucangchai/${id}`)
       .then((res) => {
         console.log(res.data);
-        fetchData()
+        fetchData();
       })
       .catch((error) => {
         console.log(error);
@@ -182,39 +186,6 @@ export default function DataPage() {
       <Helmet>
         <title> Mù Cang Chải </title>
       </Helmet>
-      <Grid container spacing={3} sx={{ mb: 5 }}>
-      <Grid item xs={12} md={6} lg={8}>
-            <Card>
-              <CardHeader title="trạm Mù Cang Chải" />
-
-              <Box sx={{ p: 3, pb: 1 }} dir="ltr">
-                <iframe
-                  title="trạm Mù Cang Chải"
-                  width="600"
-                  height="400"
-                  seamless
-                  src="http://localhost:8088/superset/explore/p/ownB4nVPqKQ/?standalone=1&height=400"
-                />
-              </Box>
-            </Card>
-          </Grid>
-
-          <Grid item xs={12} md={6} lg={4}>
-            <Card>
-              <CardHeader title="trạm Mù Cang Chải" />
-
-              <Box sx={{ p: 3, pb: 1 }} dir="ltr">
-                <iframe
-                  title="trạm Mù Cang Chải"
-                  width="280"
-                  height="400"
-                  seamless
-                  src="http://localhost:8088/superset/explore/p/v3MZlKxBemo/?standalone=1&height=400"
-                />
-              </Box>
-            </Card>
-          </Grid>
-      </Grid>
       <Container>
         <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5}>
           <Typography variant="h4" gutterBottom>
@@ -226,7 +197,48 @@ export default function DataPage() {
             </Button>
           </Link>
         </Stack>
-
+        <Grid container spacing={3} sx={{ mb: 5 }}>
+        <Grid item xs={12} md={6} lg={8}>
+          <Accordion>
+            <AccordionSummary expandIcon={<ExpandCircleDown />} aria-controls="panel1a-content" id="panel1a-header">
+              <Typography>trạm Mù Cang Chải</Typography>
+            </AccordionSummary>
+            <AccordionDetails>
+              <Card>
+                <Box sx={{ p: 3, pb: 1 }} dir="ltr">
+                  <iframe
+                    title="trạm Mù Cang Chải"
+                    width="600"
+                    height="400"
+                    seamless
+                    src="http://localhost:8088/superset/explore/p/ownB4nVPqKQ/?standalone=1&height=400"
+                  />
+                </Box>
+              </Card>
+            </AccordionDetails>
+          </Accordion>
+        </Grid>
+        <Grid item xs={12} md={6} lg={4}>
+          <Accordion>
+            <AccordionSummary expandIcon={<ExpandCircleDown />} aria-controls="panel2a-content" id="panel2a-header">
+              <Typography>trạm Mù Cang Chải</Typography>
+            </AccordionSummary>
+            <AccordionDetails>
+              <Card>
+                <Box sx={{ p: 3, pb: 1 }} dir="ltr">
+                  <iframe
+                    title="trạm Mù Cang Chải"
+                    width="280"
+                    height="400"
+                    seamless
+                    src="http://localhost:8088/superset/explore/p/v3MZlKxBemo/?standalone=1&height=400"
+                  />
+                </Box>
+              </Card>
+            </AccordionDetails>
+          </Accordion>
+        </Grid>
+      </Grid>
         <Card>
           <UserListToolbar numSelected={selected.length} filterName={filterName} onFilterName={handleFilterByName} />
 
@@ -274,10 +286,10 @@ export default function DataPage() {
                             <Iconify icon={'eva:more-vertical-fill'} />
                           </IconButton> */}
                           <Link style={{ textDecoration: 'none', color: 'black' }} to={`edit/${id}`}>
-                          <MenuItem>
-                            <Iconify icon={'eva:edit-fill'} sx={{ mr: 2 }} />
-                            Edit
-                          </MenuItem>
+                            <MenuItem>
+                              <Iconify icon={'eva:edit-fill'} sx={{ mr: 2 }} />
+                              Edit
+                            </MenuItem>
                           </Link>
 
                           <MenuItem sx={{ color: 'error.main' }} onClick={() => deleteData(id)}>
