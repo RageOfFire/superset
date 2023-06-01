@@ -58,7 +58,7 @@ export default function DashboardAppPage() {
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                   />
                   {data.map((item) => (
-                    <Marker position={[item.y, item.x]}>
+                    <Marker position={[item.y, item.x]} key={item.id}>
                       <Popup>
                         <h2>{item.trạm}</h2>
                         <p>Lượng mưa: {item.mua}</p>

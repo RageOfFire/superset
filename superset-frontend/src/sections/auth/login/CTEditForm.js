@@ -2,11 +2,13 @@ import { useNavigate, useParams } from 'react-router-dom';
 // @mui
 import { Stack, TextField, MenuItem } from '@mui/material';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import { LocalizationProvider, StaticDateTimePicker } from '@mui/x-date-pickers';
 import { LoadingButton } from '@mui/lab';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import dayjs from 'dayjs';
+import utc from 'dayjs/plugin/utc';
+import timezone from 'dayjs/plugin/timezone';
 
 // ----------------------------------------------------------------------
 
@@ -20,20 +22,24 @@ const sources = [
     label: 'import',
   }
 ];
+dayjs.extend(utc)
+dayjs.extend(timezone)
+
+const tz = "Asia/Ho_Chi_Minh";
 
 export default function EditForm() {
   const { id } = useParams();
   const navigate = useNavigate();
-  const [stationId, setStationId] = useState('');
-  const [time, setTime] = useState('');
-  const [amount, setAmount] = useState('');
+  const [stationId, setStationId] = useState(0);
+  const [time, setTime] = useState(dayjs(new Date()).tz(tz));
+  const [amount, setAmount] = useState(0);
   const [source, setSource] = useState('');
 
   const fetchDataById = async () => {
     axios.get(`http://localhost:8000/api/chetao/${id}`)
       .then((res) => {
         setStationId(res.data.stationId);
-        setTime(res.data.time);
+        setTime(dayjs(res.data.time).tz(tz));
         setAmount(res.data.amount);
         setSource(res.data.source);
       }).catch((error) => {
@@ -66,15 +72,14 @@ export default function EditForm() {
       <Stack spacing={3} sx={{ my: 2 }}>
       <TextField type="number" name="stationId" label="Mã trạm" onChange={(e) => setStationId(e.target.value)} value={stationId} />
       <LocalizationProvider dateAdapter={AdapterDayjs}>
-        <DatePicker onChange={(e) => setTime(e.target.value)} value={time} />
+        <StaticDateTimePicker orientation="landscape" onChange={(e) => setTime(dayjs(e.target.value).tz(tz))} value={time} />
       </LocalizationProvider>
       <TextField type="number" name="amount" label="Số lượng" onChange={(e) => setAmount(e.target.value)} value={amount} />
       <TextField
         select
         label="Chọn"
-        defaultValue="import"
-        onChange={(e) => setSource(e.target.value)}
         value={source}
+        onChange={(e) => setSource(e.target.value)}
       >
         {sources.map((option) => (
           <MenuItem key={option.value} value={option.value}>
