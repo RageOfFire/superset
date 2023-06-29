@@ -15,7 +15,7 @@ class KhauPhaController extends Controller
      */
     public function index()
     {
-        $khauPha = KhauPha::all();
+        $khauPha = KhauPha::offset(0)->limit(20)->get();
         return response()->json($khauPha);
     }
 
